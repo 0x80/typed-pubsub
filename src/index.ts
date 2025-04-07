@@ -1,3 +1,2 @@
-export function helloWorld() {
-  return "Hello, world!";
-}
+export { createTypedPubsub } from "./factory";
+export * from "./types";
