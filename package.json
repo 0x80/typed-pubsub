@@ -1,5 +1,5 @@
 {
-  "name": "typed-pubsub",
+  "name": "@codecompose/typed-pubsub",
   "version": "1.0.0",
   "description": "A type-safe pub/sub abstraction for Google Cloud and Firebase",
   "type": "module",
@@ -10,6 +10,9 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/0x80/typed-pubsub.git"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "keywords": [
     "pubsub",

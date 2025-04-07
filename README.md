@@ -19,7 +19,7 @@ A type-safe PubSub abstraction for Google Cloud and Firebase.
 ## Installation
 
 ```bash
-npm install typed-pubsub
+npm install @codecompose/typed-pubsub
 ```
 
 ## Peer Dependencies
@@ -39,7 +39,7 @@ This package has the following peer dependencies:
 
 ```typescript
 import { PubSub } from "@google-cloud/pubsub";
-import { createTypedPubsub } from "typed-pubsub";
+import { createTypedPubsub } from "@codecompose/typed-pubsub";
 import { z } from "zod";
 
 // 1. Define your schemas
@@ -84,7 +84,7 @@ export const handle_user_created = pubsub.createHandler({
 
 ```typescript
 import { PubSub } from "@google-cloud/pubsub";
-import { createTypedPubsub } from "typed-pubsub";
+import { createTypedPubsub } from "@codecompose/typed-pubsub";
 import { z } from "zod";
 
 // Define your schemas
@@ -158,7 +158,7 @@ once despite potential redeliveries.
 
 ```typescript
 import { PubSub } from "@google-cloud/pubsub";
-import { createTypedPubsub } from "typed-pubsub";
+import { createTypedPubsub } from "@codecompose/typed-pubsub";
 import { redis } from "./redis-client";
 
 // Create event marking functions
