@@ -5,6 +5,19 @@
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "license": "MIT",
+  "author": "Thijs Koerselman",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/0x80/typed-pubsub.git"
+  },
+  "keywords": [
+    "pubsub",
+    "google-cloud-pubsub",
+    "firebase",
+    "typescript",
+    "cloud-functions"
+  ],
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",

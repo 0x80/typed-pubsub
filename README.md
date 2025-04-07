@@ -16,6 +16,20 @@ A type-safe PubSub abstraction for Google Cloud and Firebase.
     of 3000)
   - 512MB memory allocation per instance
 
+## Installation
+
+```bash
+npm install typed-pubsub
+```
+
+## Peer Dependencies
+
+This package has the following peer dependencies:
+
+- `@google-cloud/pubsub`
+- `firebase-functions`
+- `zod`
+
 ## Quick Start
 
 1. Define your message schemas with Zod
@@ -62,19 +76,7 @@ export const handle_user_created = pubsub.createHandler({
 });
 ```
 
-## Installation
 
-```bash
-npm install typed-pubsub
-```
-
-## Peer Dependencies
-
-This package has the following peer dependencies:
-
-- `@google-cloud/pubsub`
-- `firebase-functions`
-- `zod`
 
 ## Usage Examples
 
