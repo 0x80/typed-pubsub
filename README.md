@@ -51,11 +51,11 @@ const schemas = {
 };
 
 // 2. Create PubSub client
-const pubsubClient = new PubSub();
+const client = new PubSub();
 
 // 3. Initialize typed PubSub
 const pubsub = createTypedPubsub({
-  pubsubClient,
+  client,
   schemas,
   region: "us-central1",
 });
@@ -107,12 +107,9 @@ const schemas = {
   }),
 };
 
-// Create a PubSub client
-const pubsubClient = new PubSub();
-
 // Create typed Pubsub client
 const pubsub = createTypedPubsub({
-  pubsubClient,
+  client: new PubSub(),
   schemas,
   region: "us-central1",
 });
@@ -173,7 +170,7 @@ const eventMarkingFunctions = {
 
 // Create typed Pubsub client with event marking
 const pubsub = createTypedPubsub({
-  pubsubClient,
+  client: new PubSub(),
   schemas,
   region: "us-central1",
   options: {
@@ -213,16 +210,15 @@ Creates a type-safe Pubsub client for handling messages with schema validation.
 
 #### Parameters
 
-- `options`: Configuration object with the following properties:
-  - `pubsubClient`: Google Cloud Pubsub client instance
-  - `schemas`: Record of Zod schemas for each topic
-  - `region`: GCP region for the Pubsub functions
-  - `options`: (Optional) Configuration options
-    - `eventMarkingFunctions`: (Optional) Functions for tracking processed
-      events
-    - `defaultHandlerOptions`: (Optional) Default options for all handlers
-  - `onMessagePublished`: (Optional) Firebase message published handler,
-    defaults to firebase implementation
+- `client`: Google Cloud Pubsub client instance
+- `schemas`: Record of Zod schemas for each topic
+- `region`: GCP region for the Pubsub functions
+- `options`: (Optional) Configuration options
+  - `eventMarkingFunctions`: (Optional) Functions for tracking processed
+    events
+  - `defaultHandlerOptions`: (Optional) Default options for all handlers
+- `onMessagePublished`: (Optional) Firebase message published handler,
+  defaults to firebase implementation
 
 ### Key Handler Options
 
@@ -254,5 +250,5 @@ PubSub messages, there are some limitations inherent to PubSub:
 If your use case requires more advanced features like controlled retry
 intervals, manual retry triggering, or long-running background processes,
 consider using a dedicated task queue system. The
-[github.com/0x80/typed-tasks](https://github.com/0x80/typed-tasks) library
+[typed-tasks](https://github.com/0x80/typed-tasks) library
 provides similar type-safety guarantees with more control over task execution.
