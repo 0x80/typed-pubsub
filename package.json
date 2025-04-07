@@ -16,8 +16,9 @@
   },
   "keywords": [
     "pubsub",
-    "google-cloud-pubsub",
+    "@google-cloud/pubsub",
     "firebase",
+    "firebase-functions",
     "typescript",
     "cloud-functions"
   ],
@@ -36,7 +37,8 @@
     "build": "tsup && tsc --emitDeclarationOnly",
     "clean": "del-cli dist tsconfig.tsbuildinfo",
     "test": "vitest run",
-    "lint": "eslint . --max-warnings=0"
+    "lint": "eslint . --max-warnings=0",
+    "prepare": "pnpm clean && pnpm build"
   },
   "devDependencies": {
     "@codecompose/typescript-config": "^1.2.0",
