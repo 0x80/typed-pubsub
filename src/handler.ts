@@ -37,11 +37,8 @@ export function createHandlerFactory<Schemas extends SchemaRecord<string>>(
   }) => {
     const {
       retryMaxAgeMinutes,
-      memory,
-      timeoutSeconds,
       markEvent,
-      vpcConnector,
-      retry,
+      ...mergedOptions
     } = {
       ...defaultOptions,
       ...options,
@@ -52,13 +49,9 @@ export function createHandlerFactory<Schemas extends SchemaRecord<string>>(
 
     return onMessagePublished(
       {
+        ...mergedOptions,
         topic,
         region,
-        retry,
-        vpcConnector,
-        cpu: 1,
-        memory,
-        timeoutSeconds,
       },
       async (event) => {
         // Use internal shouldDropEvent implementation
