@@ -107,6 +107,38 @@ describe("createHandlerFactory", () => {
         memory: "512MiB",
         timeoutSeconds: 20,
         vpcConnector: undefined,
+        maxInstances: 250,
+      }),
+      expect.any(Function)
+    );
+  });
+
+  it("should forward additional PubSub options via spread", () => {
+    const createHandler = createHandlerFactory(
+      testSchemas,
+      region,
+      undefined,
+      handlerOptions,
+      onMessagePublishedMock
+    );
+
+    const handlerFn = vi.fn().mockResolvedValue(undefined);
+    createHandler({
+      topic: "alert",
+      handler: handlerFn,
+      options: {
+        cpu: 2,
+        maxInstances: 100,
+      },
+    });
+
+    /** Verify spread-forwarded options are passed through to onMessagePublished */
+    expect(onMessagePublishedMock).toHaveBeenCalledWith(
+      expect.objectContaining({
+        topic: "alert",
+        region: "us-central1",
+        cpu: 2,
+        maxInstances: 100,
       }),
       expect.any(Function)
     );
