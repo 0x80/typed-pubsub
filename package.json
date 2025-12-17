@@ -31,12 +31,14 @@
     "src"
   ],
   "scripts": {
-    "type-check": "tsc --noEmit",
+    "check-types": "tsc --noEmit",
     "build": "tsdown",
     "dev": "tsdown --watch",
     "clean": "del-cli dist tsconfig.tsbuildinfo",
     "test": "vitest run",
     "lint": "oxlint --type-aware",
+    "format": "prettier --write .",
+    "check-format": "prettier --check .",
     "prepare": "pnpm clean && pnpm build"
   },
   "devDependencies": {
