@@ -12,7 +12,7 @@ export type PubsubTopic = string;
 /** Record of schema types for each topic */
 export type SchemaRecord<TopicName extends PubsubTopic> = Record<
   TopicName,
-  z.ZodType<unknown>
+  z.ZodType
 >;
 
 /**
