@@ -9,4 +9,6 @@ export const defaultHandlerOptions = {
   cpu: 1,
   timeoutSeconds: 20,
   maxInstances: 250,
+  markEvent: false,
+  vpcConnector: undefined,
 } as const;
