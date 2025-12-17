@@ -76,8 +76,6 @@ export const handle_user_created = pubsub.createHandler({
 });
 ```
 
-
-
 ## Usage Examples
 
 ### Basic Setup
@@ -101,7 +99,7 @@ const schemas = {
       z.object({
         productId: z.string(),
         quantity: z.number().int().positive(),
-      })
+      }),
     ),
     total: z.number().positive(),
   }),
@@ -214,11 +212,10 @@ Creates a type-safe Pubsub client for handling messages with schema validation.
 - `schemas`: Record of Zod schemas for each topic
 - `region`: GCP region for the Pubsub functions
 - `options`: (Optional) Configuration options
-  - `eventMarkingFunctions`: (Optional) Functions for tracking processed
-    events
+  - `eventMarkingFunctions`: (Optional) Functions for tracking processed events
   - `defaultHandlerOptions`: (Optional) Default options for all handlers
-- `onMessagePublished`: (Optional) Firebase message published handler,
-  defaults to firebase implementation
+- `onMessagePublished`: (Optional) Firebase message published handler, defaults
+  to firebase implementation
 
 ### Key Handler Options
 
@@ -250,5 +247,5 @@ PubSub messages, there are some limitations inherent to PubSub:
 If your use case requires more advanced features like controlled retry
 intervals, manual retry triggering, or long-running background processes,
 consider using a dedicated task queue system. The
-[typed-tasks](https://github.com/0x80/typed-tasks) library
-provides similar type-safety guarantees with more control over task execution.
+[typed-tasks](https://github.com/0x80/typed-tasks) library provides similar
+type-safety guarantees with more control over task execution.

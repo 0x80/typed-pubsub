@@ -9,7 +9,7 @@ import type { PubsubTopicPayload, SchemaRecord } from "./types";
  * @returns A factory function for creating publishers
  */
 export function createPublisherFactory<Schemas extends SchemaRecord<string>>(
-  pubsubClient: PubSub
+  pubsubClient: PubSub,
 ) {
   return <T extends keyof Schemas & string>(topicName: T) => {
     /**

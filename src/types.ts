@@ -51,7 +51,7 @@ export type LengthTuple<
 export type TypedPubsubClient<Schemas extends SchemaRecord<string>> = {
   /** Creates a type-safe publisher function for the specified topic */
   createPublisher: <T extends keyof Schemas & string>(
-    topic: T
+    topic: T,
   ) => (data: PubsubTopicPayload<Schemas, T>) => Promise<void>;
 
   /** Creates a type-safe handler function for processing messages from a topic */

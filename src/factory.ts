@@ -46,7 +46,7 @@ export function createTypedPubsub<Schemas extends SchemaRecord<string>>({
       region,
       options.eventMarkingFunctions,
       handlerOptions,
-      onMessagePublished
+      onMessagePublished,
     ),
   };
 }
