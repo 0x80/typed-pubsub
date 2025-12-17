@@ -14,12 +14,12 @@ const onMessagePublishedMock = vi
   .mockImplementation(
     (
       config,
-      handlerFn: (event: CloudEvent<MessagePublishedData>) => Promise<void>
+      handlerFn: (event: CloudEvent<MessagePublishedData>) => Promise<void>,
     ) => {
       // Return a function that simulates the handler function being called
       // This lets us call the handler directly in tests without the real Firebase function
       return handlerFn;
-    }
+    },
   ) as unknown as typeof onMessagePublishedType;
 
 vi.mock("./utils", () => ({
@@ -90,7 +90,7 @@ describe("createHandlerFactory", () => {
       region,
       undefined,
       handlerOptions,
-      onMessagePublishedMock
+      onMessagePublishedMock,
     );
 
     const handlerFn = vi.fn().mockResolvedValue(undefined);
@@ -109,7 +109,7 @@ describe("createHandlerFactory", () => {
         vpcConnector: undefined,
         maxInstances: 250,
       }),
-      expect.any(Function)
+      expect.any(Function),
     );
   });
 
@@ -119,7 +119,7 @@ describe("createHandlerFactory", () => {
       region,
       undefined,
       handlerOptions,
-      onMessagePublishedMock
+      onMessagePublishedMock,
     );
 
     const handlerFn = vi.fn().mockResolvedValue(undefined);
@@ -140,7 +140,7 @@ describe("createHandlerFactory", () => {
         cpu: 2,
         maxInstances: 100,
       }),
-      expect.any(Function)
+      expect.any(Function),
     );
   });
 
@@ -150,7 +150,7 @@ describe("createHandlerFactory", () => {
       region,
       undefined,
       handlerOptions,
-      onMessagePublishedMock
+      onMessagePublishedMock,
     );
 
     const handlerFn = vi.fn().mockResolvedValue(undefined);
@@ -180,7 +180,7 @@ describe("createHandlerFactory", () => {
         region,
         undefined,
         handlerOptions,
-        onMessagePublishedMock
+        onMessagePublishedMock,
       );
 
       const handlerFn = vi.fn().mockResolvedValue(undefined);
@@ -214,7 +214,7 @@ describe("createHandlerFactory", () => {
       region,
       undefined,
       handlerOptions,
-      onMessagePublishedMock
+      onMessagePublishedMock,
     );
 
     const handlerFn = vi.fn().mockResolvedValue(undefined);
@@ -232,7 +232,7 @@ describe("createHandlerFactory", () => {
     // Verify shouldDropEvent was called
     expect(shouldDropEvent).toHaveBeenCalledWith(
       mockEvent,
-      handlerOptions.retryMaxAgeMinutes
+      handlerOptions.retryMaxAgeMinutes,
     );
 
     // Verify handler was NOT called because event should be dropped
@@ -245,7 +245,7 @@ describe("createHandlerFactory", () => {
       region,
       eventMarkingFunctions,
       handlerOptions,
-      onMessagePublishedMock
+      onMessagePublishedMock,
     );
 
     const handlerFn = vi.fn().mockResolvedValue(undefined);
@@ -265,10 +265,10 @@ describe("createHandlerFactory", () => {
 
     // Verify event marking functions were called
     expect(eventMarkingFunctions.isEventProcessed).toHaveBeenCalledWith(
-      "event-123"
+      "event-123",
     );
     expect(eventMarkingFunctions.markEventAsProcessed).toHaveBeenCalledWith(
-      "event-123"
+      "event-123",
     );
 
     // Verify handler was called with the correct payload
@@ -289,7 +289,7 @@ describe("createHandlerFactory", () => {
         region,
         eventMarkingFunctions,
         handlerOptions,
-        onMessagePublishedMock
+        onMessagePublishedMock,
       );
 
       const handlerFn = vi.fn().mockResolvedValue(undefined);
@@ -309,7 +309,7 @@ describe("createHandlerFactory", () => {
 
       /** Verify isEventProcessed was called */
       expect(eventMarkingFunctions.isEventProcessed).toHaveBeenCalledWith(
-        "event-123"
+        "event-123",
       );
 
       /** Verify handler was NOT called as the event was already processed */

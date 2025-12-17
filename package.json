@@ -3,8 +3,8 @@
   "version": "1.1.1",
   "description": "A type-safe pub/sub abstraction for Google Cloud and Firebase",
   "type": "module",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "./dist/index.mjs",
+  "types": "./dist/index.d.mts",
   "license": "MIT",
   "author": "Thijs Koerselman",
   "repository": {
@@ -23,43 +23,46 @@
     "cloud-functions"
   ],
   "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
-    }
+    ".": "./dist/index.mjs",
+    "./package.json": "./package.json"
   },
   "files": [
     "dist",
     "src"
   ],
   "scripts": {
-    "type-check": "tsc --noEmit",
-    "build": "tsup && tsc --emitDeclarationOnly",
+    "check-types": "tsc --noEmit",
+    "build": "tsdown",
+    "dev": "tsdown --watch",
     "clean": "del-cli dist tsconfig.tsbuildinfo",
     "test": "vitest run",
-    "lint": "eslint . --max-warnings=0",
+    "lint": "oxlint --type-aware",
+    "format": "prettier --write .",
+    "check-format": "prettier --check .",
     "prepare": "pnpm clean && pnpm build"
   },
   "devDependencies": {
-    "@codecompose/typescript-config": "^1.2.0",
-    "@eslint/js": "^9.35.0",
+    "@codecompose/typescript-config": "^2.2.0",
     "@google-cloud/pubsub": "^5.2.0",
-    "del-cli": "^6.0.0",
-    "eslint": "^9.35.0",
-    "firebase-functions": "^6.4.0",
-    "tsup": "^8.5.0",
-    "typescript": "^5.9.2",
-    "typescript-eslint": "^8.42.0",
-    "vitest": "^3.2.4",
-    "zod": "^4.1.5"
+    "del-cli": "^7.0.0",
+    "firebase-functions": "^7.0.2",
+    "oxlint": "^1.33.0",
+    "oxlint-tsgolint": "^0.9.1",
+    "prettier": "^3.7.4",
+    "prettier-plugin-jsdoc": "^1.8.0",
+    "tsdown": "^0.18.0",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.16",
+    "zod": "^4.2.1"
   },
   "dependencies": {
     "get-or-throw": "^2.1.0"
   },
-  "packageManager": "pnpm@9.15.9+sha512.68046141893c66fad01c079231128e9afb89ef87e2691d69e4d40eee228988295fd4682181bae55b58418c3a253bde65a505ec7c5f9403ece5cc3cd37dcf2531",
+  "packageManager": "pnpm@10.26.0+sha512.3b3f6c725ebe712506c0ab1ad4133cf86b1f4b687effce62a9b38b4d72e3954242e643190fc51fa1642949c735f403debd44f5cb0edd657abe63a8b6a7e1e402",
   "peerDependencies": {
     "@google-cloud/pubsub": ">=4",
     "firebase-functions": ">=6",
     "zod": ">=3"
-  }
+  },
+  "module": "./dist/index.mjs"
 }

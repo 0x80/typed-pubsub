@@ -36,7 +36,7 @@ export function createTypedPubsub<Schemas extends SchemaRecord<string>>({
   // Merge default handler options
   const handlerOptions: HandlerOptions = {
     ...defaultHandlerOptions,
-    ...(options.defaultHandlerOptions ?? {}),
+    ...options.defaultHandlerOptions,
   };
 
   return {
@@ -46,7 +46,7 @@ export function createTypedPubsub<Schemas extends SchemaRecord<string>>({
       region,
       options.eventMarkingFunctions,
       handlerOptions,
-      onMessagePublished
+      onMessagePublished,
     ),
   };
 }

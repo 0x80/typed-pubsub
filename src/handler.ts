@@ -24,7 +24,7 @@ export function createHandlerFactory<Schemas extends SchemaRecord<string>>(
   region: string,
   eventMarkingFunctions?: EventMarkingFunctions,
   defaultOptions: HandlerOptions = defaultHandlerOptions,
-  onMessagePublished = firebaseOnMessagePublished
+  onMessagePublished = firebaseOnMessagePublished,
 ) {
   return <T extends keyof Schemas & string>({
     topic,
@@ -35,11 +35,7 @@ export function createHandlerFactory<Schemas extends SchemaRecord<string>>(
     handler: (payload: PubsubTopicPayload<Schemas, T>) => Promise<void>;
     options?: HandlerOptions;
   }) => {
-    const {
-      retryMaxAgeMinutes,
-      markEvent,
-      ...mergedOptions
-    } = {
+    const { retryMaxAgeMinutes, markEvent, ...mergedOptions } = {
       ...defaultOptions,
       ...options,
     };
@@ -70,8 +66,8 @@ export function createHandlerFactory<Schemas extends SchemaRecord<string>>(
              */
             console.error(
               new Error(
-                `(Not an error) Pubsub event ${event.id} was already processed`
-              )
+                `(Not an error) Pubsub event ${event.id} was already processed`,
+              ),
             );
             return;
           }
@@ -85,7 +81,7 @@ export function createHandlerFactory<Schemas extends SchemaRecord<string>>(
         if (!result.success) {
           console.error(
             new Error(`Zod validation error for topic ${topic}`),
-            result.error.flatten()
+            result.error.flatten(),
           );
           return;
         }
@@ -96,7 +92,7 @@ export function createHandlerFactory<Schemas extends SchemaRecord<string>>(
         if (canMarkEvents && event.id) {
           await eventMarkingFunctions.markEventAsProcessed(event.id);
         }
-      }
+      },
     );
   };
 }

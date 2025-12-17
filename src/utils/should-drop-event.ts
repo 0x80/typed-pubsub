@@ -2,7 +2,7 @@ import type { CloudEvent } from "firebase-functions/v2";
 
 export function shouldDropEvent(
   event: CloudEvent<unknown>,
-  maxAgeMinutes?: number
+  maxAgeMinutes?: number,
 ) {
   // If maxAgeMinutes is undefined, we don't drop events based on age
   if (maxAgeMinutes === undefined) {
@@ -16,8 +16,8 @@ export function shouldDropEvent(
     /** Dropping event due to max age reached */
     console.error(
       new Error(
-        `Dropping event ${event.type} for ${event.source} because max age (${String(maxAgeMinutes)} minutes) was reached.`
-      )
+        `Dropping event ${event.type} for ${event.source} because max age (${String(maxAgeMinutes)} minutes) was reached.`,
+      ),
     );
     return true;
   }
