@@ -24,7 +24,7 @@ const eventMarkingFunctions = {
     return Boolean(await redis.get(`event:${eventId}`));
   },
   markEventAsProcessed: async (eventId: string) => {
-    await redis.set(`event:${eventId}`, "1", "EX", 86400); // 24h TTL
+    await redis.set(`event:${eventId}`, "1", { EX: 86400 }); // 24h TTL
   },
 };
 

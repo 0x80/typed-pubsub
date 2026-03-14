@@ -106,6 +106,7 @@ Record user events with an expiration time for automatic cleanup:
 export const record_user_event = pubsub.createHandler({
   topic: "record_user_event",
   handler: async ({ userId, type, metadata }) => {
+    const YEAR_MS = 365.25 * 24 * 60 * 60 * 1000;
     const ttlMs = YEAR_MS * 2;
 
     await refs.userEvents(userId).add({
