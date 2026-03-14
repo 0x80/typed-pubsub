@@ -16,20 +16,20 @@ const pubsub = createTypedPubsub({
 });
 ```
 
-| Parameter | Type | Required | Description |
-| --- | --- | --- | --- |
-| `client` | `PubSub` | Yes | Google Cloud PubSub client instance |
-| `schemas` | `SchemaRecord` | Yes | Record of Zod schemas keyed by topic name |
-| `region` | `string` | Yes | GCP region for the PubSub functions |
-| `options` | `TypedPubsubOptions` | No | Global configuration |
-| `onMessagePublished` | `function` | No | Custom message handler (defaults to Firebase implementation) |
+| Parameter            | Type                 | Required | Description                                                  |
+| -------------------- | -------------------- | -------- | ------------------------------------------------------------ |
+| `client`             | `PubSub`             | Yes      | Google Cloud PubSub client instance                          |
+| `schemas`            | `SchemaRecord`       | Yes      | Record of Zod schemas keyed by topic name                    |
+| `region`             | `string`             | Yes      | GCP region for the PubSub functions                          |
+| `options`            | `TypedPubsubOptions` | No       | Global configuration                                         |
+| `onMessagePublished` | `function`           | No       | Custom message handler (defaults to Firebase implementation) |
 
 ### TypedPubsubOptions
 
-| Property | Type | Description |
-| --- | --- | --- |
+| Property                | Type                    | Description                                                                  |
+| ----------------------- | ----------------------- | ---------------------------------------------------------------------------- |
 | `eventMarkingFunctions` | `EventMarkingFunctions` | Functions for tracking processed events. See [Event Marking](/event-marking) |
-| `defaultHandlerOptions` | `HandlerOptions` | Default options applied to all handlers |
+| `defaultHandlerOptions` | `HandlerOptions`        | Default options applied to all handlers                                      |
 
 ## Handler Options
 
@@ -68,16 +68,16 @@ export const handle_heavy_task = pubsub.createHandler({
 
 ### Default Values
 
-| Option | Type | Default | Description |
-| --- | --- | --- | --- |
-| `retry` | `boolean` | `true` | Enable automatic retries with exponential backoff |
-| `retryMaxAgeMinutes` | `number` | `undefined` | Maximum event age before dropping. See [Stale Events](/stale-events) |
-| `memory` | `string` | `"512MiB"` | Memory allocation per instance |
-| `cpu` | `number` | `1` | CPU allocation per instance |
-| `timeoutSeconds` | `number` | `20` | Function timeout in seconds |
-| `maxInstances` | `number` | `250` | Maximum concurrent instances |
-| `markEvent` | `boolean` | `false` | Enable duplicate prevention. See [Event Marking](/event-marking) |
-| `vpcConnector` | `string` | `undefined` | VPC connector name (needed for Redis in a VPC) |
+| Option               | Type      | Default     | Description                                                          |
+| -------------------- | --------- | ----------- | -------------------------------------------------------------------- |
+| `retry`              | `boolean` | `true`      | Enable automatic retries with exponential backoff                    |
+| `retryMaxAgeMinutes` | `number`  | `undefined` | Maximum event age before dropping. See [Stale Events](/stale-events) |
+| `memory`             | `string`  | `"512MiB"`  | Memory allocation per instance                                       |
+| `cpu`                | `number`  | `1`         | CPU allocation per instance                                          |
+| `timeoutSeconds`     | `number`  | `20`        | Function timeout in seconds                                          |
+| `maxInstances`       | `number`  | `250`       | Maximum concurrent instances                                         |
+| `markEvent`          | `boolean` | `false`     | Enable duplicate prevention. See [Event Marking](/event-marking)     |
+| `vpcConnector`       | `string`  | `undefined` | VPC connector name (needed for Redis in a VPC)                       |
 
 In addition to these options, all native `PubSubOptions` from `firebase-functions/v2/pubsub` (except `region` and `topic`) are supported and forwarded directly to the underlying Firebase function.
 

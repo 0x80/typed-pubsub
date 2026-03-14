@@ -4,7 +4,6 @@ on:
   pull_request: # push is handled in the deploy workflows
     branches: ["**"]
   workflow_call:
-  workflow_call:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}

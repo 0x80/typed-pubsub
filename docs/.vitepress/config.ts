@@ -2,8 +2,7 @@ import { defineConfig } from "vitepress";
 
 export default defineConfig({
   title: "Typed PubSub",
-  description:
-    "A type-safe PubSub abstraction for Google Cloud and Firebase",
+  description: "A type-safe PubSub abstraction for Google Cloud and Firebase",
   base: "/",
   cleanUrls: true,
 

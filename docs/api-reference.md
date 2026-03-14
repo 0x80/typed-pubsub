@@ -92,11 +92,11 @@ type EventMarkingFunctions = {
 
 Options for configuring a handler. Extends `PubSubOptions` from `firebase-functions/v2/pubsub` (excluding `region` and `topic`) with additional properties:
 
-| Property | Type | Description |
-| --- | --- | --- |
-| `retry` | `boolean` | Enable/disable automatic retries |
-| `retryMaxAgeMinutes` | `number` | Maximum event age before dropping |
-| `markEvent` | `boolean` | Enable duplicate prevention |
+| Property             | Type      | Description                       |
+| -------------------- | --------- | --------------------------------- |
+| `retry`              | `boolean` | Enable/disable automatic retries  |
+| `retryMaxAgeMinutes` | `number`  | Maximum event age before dropping |
+| `markEvent`          | `boolean` | Enable duplicate prevention       |
 
 All other `PubSubOptions` properties (like `memory`, `cpu`, `timeoutSeconds`, `maxInstances`, `vpcConnector`, etc.) are also available.
 
